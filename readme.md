@@ -1,4 +1,4 @@
-# DogeSwap
+# ShoobSwap
 
 ## Run the app locally (port 9000)
 
