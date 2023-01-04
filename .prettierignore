@@ -1,0 +1,9 @@
+.github
+yarn.lock
+LICENSE
+*.jpg
+*.jpeg
+*.png
+CNAME
+*.svg
+*.ico

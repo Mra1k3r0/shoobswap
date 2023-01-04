@@ -1,0 +1,22 @@
+{
+    "include": [
+        "./scripts",
+        "./hardhat.config.ts"
+    ],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "jsx": "react",
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "target": "es2021"
+    }
+}

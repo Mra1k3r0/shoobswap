@@ -1,0 +1,58 @@
+{
+    "name": "shoobswap",
+    "description": "The DogeSwap DEX monorepo",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/mraikero-01/shoobswap.git"
+    },
+    "keywords": [
+        "dogeswap",
+        "ethereum"
+    ],
+    "packageManager": "yarn@3.2.2",
+    "scripts": {
+        "build": "concurrently \"yarn workspace @dogeswap/contracts-core build && yarn workspace @dogeswap/contracts-periphery build\" \"yarn workspace @dogeswap/sdk-core build && yarn workspace @dogeswap/v2-sdk build\" && yarn workspace @dogeswap/interface build",
+        "clean": "yarn workspaces foreach run clean && hardhat clean",
+        "dev": "concurrently \"yarn localnet:run\" \"yarn localnet:deploy\" \"yarn interface:run\"",
+        "interface:run": "yarn workspace @dogeswap/interface dev",
+        "localnet:run": "yarn hardhat node",
+        "localnet:deploy": "concurrently \"yarn workspace @dogeswap/contracts-core build\" \"yarn workspace @dogeswap/contracts-periphery build\" && yarn hardhat run --network localhost scripts/run-localnet.ts",
+        "mainnet:deploy": "yarn build && yarn hardhat deploy --network mainnet",
+        "test": "yarn workspaces foreach run test",
+        "testnet:deploy": "yarn build && yarn hardhat deploy --network testnet"
+    },
+    "devDependencies": {
+        "@nomiclabs/hardhat-ethers": "^2.1.0",
+        "@types/yargs": "^17.0.10",
+        "@typescript-eslint/eslint-plugin": "^5.25.0",
+        "@typescript-eslint/parser": "^5.25.0",
+        "concurrently": "^7.3.0",
+        "eslint": "^8.16.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-react": "^7.30.0",
+        "eslint-plugin-react-hooks": "^4.5.0",
+        "ethers": "^5.6.9",
+        "hardhat": "^2.10.0",
+        "prettier": "^2.7.1",
+        "yargs": "^17.5.1"
+    },
+    "resolutions": {
+        "@types/react": "16.9.43",
+        "@types/styled-components": "5.1.1"
+    },
+    "dependencies": {
+        "gh-pages": "^4.0.0"
+    },
+    "bugs": {
+        "url": "https://github.com/mraikero-01/shoobswap/issues"
+    },
+    "homepage": "https://github.com/mraikero-01/shoobswap/dogeswap#readme",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "SaikiDesu",
+    "license": "MIT"
+}
